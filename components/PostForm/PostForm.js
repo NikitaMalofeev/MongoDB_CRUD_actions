@@ -1,8 +1,9 @@
 "use client";
 import { createPost, updatePost } from "@/actions/postActions";
 import React, { useRef } from "react";
-import ButtonSubmit from "./ButtonSubmit";
+import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 import { useMyContext } from "@/context/Provider";
+import style from './index.module.scss'
 
 const PostForm = () => {
   const formRef = useRef();
@@ -28,8 +29,10 @@ const PostForm = () => {
       action={handleAction}
       ref={formRef}
       style={{ display: "flex", gap: 20, margin: "30px 0" }}
+      className={style.form}
     >
       <input
+        className={style.form__input}
         type="text"
         name="title"
         placeholder="title"
@@ -38,6 +41,7 @@ const PostForm = () => {
       />
 
       <input
+        className={style.form__input}
         type="text"
         name="image"
         placeholder="url"
@@ -48,7 +52,7 @@ const PostForm = () => {
       {editPost ? (
         <>
           <ButtonSubmit value="Update" />
-          <button type="button" onClick={() => setEditPost()}>
+          <button className={style.button}type="button" onClick={() => setEditPost()}>
             Cancel
           </button>
         </>

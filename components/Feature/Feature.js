@@ -1,7 +1,7 @@
 import React from 'react'
-import SearchForm from './SearchForm'
-import Sort from './Sort'
-import ButtonSubmit from './ButtonSubmit'
+import SearchForm from '../SearchForm/SearchForm'
+import Sort from '../Sort/Sort'
+import ButtonSubmit from '../ButtonSubmit/ButtonSubmit'
 
 const Feature = () => {
     

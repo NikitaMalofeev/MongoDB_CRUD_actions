@@ -1,0 +1,19 @@
+.button {
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: rgb(63, 27, 155);
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    transition: all 0.3s ease-in-out;
+
+    a {
+        text-decoration: none;
+    }
+
+    &:hover {
+        background: #714ECD;
+        color: black;
+    }
+}

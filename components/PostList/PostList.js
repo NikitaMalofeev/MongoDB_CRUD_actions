@@ -1,6 +1,6 @@
 "use client"
 import { experimental_useOptimistic as useOptimistic, useRef } from 'react'
-import PostCard from './PostCard'
+import PostCard from '../PostCard/PostCard'
 
 const PostList = ({posts}) => {
   // использую useOptimictic для удаления данных из бд
@@ -18,7 +18,7 @@ const PostList = ({posts}) => {
   }
 
   return (
-    <div style={{display: 'flex', gap: 20, flexWrap: 'wrap'}}>
+    <div style={{display: 'flex', gap: 20, flexWrap: 'wrap', paddingLeft: '50px'}}>
         { }
         {
             optimisticPosts.posts.map(post => (

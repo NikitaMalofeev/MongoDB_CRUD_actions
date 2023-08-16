@@ -1,9 +1,9 @@
 import { getAllPosts } from '@/actions/postActions'
-import PostForm from '@/components/PostForm'
-import PostList from '@/components/PostList'
-import Feature from '@/components/Feature'
+import PostForm from '@/components/PostForm/PostForm'
+import PostList from '@/components/PostList/PostList'
+import Feature from '@/components/Feature/Feature'
 import React from 'react'
-import Pagination from '@/components/Pagination'
+import Pagination from '@/components/Pagination/Pagination'
 
 const Home = async ({params, searchParams}) => {
   const { posts, totalPage } = await getAllPosts(searchParams);

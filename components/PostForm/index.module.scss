@@ -1,0 +1,23 @@
+.form {
+    display: flex;
+    padding-left: 50px;
+    &__input {
+        background: #D7CBFF;
+    }
+}
+
+.button {
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: rgb(63, 27, 155);
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+
+
+    a {
+        text-decoration: none;
+    }
+}
+

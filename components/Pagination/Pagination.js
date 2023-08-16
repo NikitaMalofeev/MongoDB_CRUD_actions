@@ -8,11 +8,11 @@ const Pagination = ({totalPage}) => {
 const { pushQuery, query} = useCustomRouter()
 
   return (
-    <div style={{display: 'flex', gap: 10, margin: '30px 0'}}>
+    <div style={{display: 'flex', gap: 10, margin: '30px 0', paddingLeft: '50px'}}>
         {
             newArray.map(page => (
                 <button key={page} onClick={() => pushQuery({page})}
-                style={{background: (query.page || 1) === page ? 'red' : ''}}>
+                style={{background: (query.page || 1) === page ? '#D7CBFF' : ''}}>
                     {page}
                 </button>
             ))

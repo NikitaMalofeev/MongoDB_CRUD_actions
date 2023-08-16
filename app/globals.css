@@ -2,10 +2,18 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #8A70CD;
+}
+
 img {
   object-fit: cover;
 }
 
 button {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }

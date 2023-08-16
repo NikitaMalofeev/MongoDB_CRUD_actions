@@ -1,7 +1,8 @@
 'use client'
 import React from 'react'
-import ButtonSubmit from './ButtonSubmit'
+import ButtonSubmit from '../ButtonSubmit/ButtonSubmit'
 import useCustomRouter from '@/lib/hooks/useCustomRouter'
+import style from './index.module.scss'
 
 const SearchForm = () => {
     
@@ -13,8 +14,8 @@ const SearchForm = () => {
     }
 
   return (
-    <form action={handleSearch}>
-        <input type="search" name="search" defaultValue={query.search || ''}/>
+    <form className={style.form} action={handleSearch}>
+        <input className={style.form__input}type="search" name="search" defaultValue={query.search || ''}/>
 
         <ButtonSubmit value='search'/>
     </form>

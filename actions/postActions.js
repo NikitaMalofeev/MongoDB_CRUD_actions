@@ -10,7 +10,7 @@ export async function getAllPosts(searchParams) {
   const sort = searchParams.sort || 'createdAt';
 
   // устанавливаю лимит на отображение карточек на странице (5)
-  const limit = searchParams.limit * 1 || 5;
+  const limit = searchParams.limit * 1 || 3;
   const page = searchParams.page * 1 || 1;
   const skip = searchParams.skip * 1 || limit * (page - 1);
 
