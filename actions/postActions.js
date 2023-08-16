@@ -5,17 +5,42 @@ import { revalidatePath } from "next/cache";
 
 connectDB();
 
-export async function getAllPosts(data) {
-  try {
-    const posts = await Post.find();
+export async function getAllPosts(searchParams) {
+  const search = searchParams.search || "";
+  const sort = searchParams.sort || 'createdAt';
 
-    const newData = posts.map((post) => ({
+  // устанавливаю лимит на отображение карточек на странице (5)
+  const limit = searchParams.limit * 1 || 5;
+  const page = searchParams.page * 1 || 1;
+  const skip = searchParams.skip * 1 || limit * (page - 1);
+
+  try {
+    const posts = await Post.find({ title: { $regex: search } })
+    .sort(sort).limit(limit).skip(skip)
+
+    // if(posts) throw new Error('Posts Error!')
+
+    const count = await Post.find({ title: { $regex: search } }).count()
+
+    const totalPage = Math.ceil(count / limit);
+
+    const newData = posts.map(post => ({
       ...post._doc,
       _id: post._doc._id.toString(),
     }));
     console.log(posts);
 
-    return { posts: newData };
+    return { posts: newData, count, totalPage };
+  } catch (error) {
+    throw new Error(error.message || "Failed to fetch posts!");
+  }
+}
+
+export async function getOnePost(postId) {
+  try {
+    const post = await Post.findById(postId);
+
+    return { ...post._doc, _id: post._doc._id.toString() };
   } catch (error) {
     throw new Error(error.message || "Failed to fetch posts!");
   }
@@ -52,14 +77,14 @@ export async function updatePost({ title, image, id }) {
   }
 }
 
-export async function deletePost(postId){
-    try {
-     const post = await Post.findByIdAndDelete(postId, {new: true})
- 
-     //функция edit для карточки
-     revalidatePath("/")
-     return {...post._doc, _id: post._id.toString()};
-    } catch (error) {
-        throw new Error(error.message || 'Failed to delete post!')
-    }
- }
+export async function deletePost(postId) {
+  try {
+    const post = await Post.findByIdAndDelete(postId, { new: true });
+
+    //функция edit для карточки
+    revalidatePath("/");
+    return { ...post._doc, _id: post._id.toString() };
+  } catch (error) {
+    throw new Error(error.message || "Failed to delete post!");
+  }
+}

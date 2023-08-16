@@ -1,5 +1,5 @@
-"use client";
-import React, { useContext, useState } from "react";
+"use client"
+import React, { useContext, useState, useEffect } from "react";
 
 const Context = React.createContext();
 
